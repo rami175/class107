@@ -11,23 +11,23 @@ app = Flask(__name__)
 def home():
     return "Hello from flask"
 
-# @app.get("/testing")
-# def test():
-#     return "Hello from another page"
+@app.get("/testing")
+def test():
+    return "Hello from another page"
 
-# @app.get("/about")
-# def about():
-#     me = {"name":"Rami"}
-#     return json.dumps(me)
+@app.get("/about")
+def about():
+    me = {"name":"Rami"}
+    return json.dumps(me)
 
-# @app.get("/version")
-# def version():
-#     version = {"name": "mouse","version":"2","build":123456}
-#     return json.dumps(version)
+@app.get("/version")
+def version():
+    version = {"name": "mouse","version":"2","build":123456}
+    return json.dumps(version)
 
-# @app.get("/blog")
-# def blog():
-#     return "Blog page"
+@app.get("/blog")
+def blog():
+    return "Blog page"
 
 #read and write into the server
 
