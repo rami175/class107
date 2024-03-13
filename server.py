@@ -1,6 +1,8 @@
-from flask import Flask, request
-
+from flask import Flask
+from flask import request
 import json
+from config import db
+
 products = []
 
 app = Flask(__name__)
@@ -9,23 +11,23 @@ app = Flask(__name__)
 def home():
     return "Hello from flask"
 
-@app.get("/testing")
-def test():
-    return "Hello from another page"
+# @app.get("/testing")
+# def test():
+#     return "Hello from another page"
 
-@app.get("/about")
-def about():
-    me = {"name":"Rami", "age":43}
-    return json.dumps(me)
+# @app.get("/about")
+# def about():
+#     me = {"name":"Rami"}
+#     return json.dumps(me)
 
-@app.get("/version")
-def version():
-    version = {"name": "mouse","version":"2","build":123456}
-    return json.dumps(version)
+# @app.get("/version")
+# def version():
+#     version = {"name": "mouse","version":"2","build":123456}
+#     return json.dumps(version)
 
-@app.get("/blog")
-def blog():
-    return "Blog page"
+# @app.get("/blog")
+# def blog():
+#     return "Blog page"
 
 #read and write into the server
 
@@ -37,19 +39,16 @@ def get_products():
 def save_products():
     #should save a new product
     product = request.get_json()
-    print(product)
+    #print(product)
     #mock the save
+    #products.append(product)
+    #db.products.insert_one(product)
     products.append(product)
-    return json.dumps(product)
+    
+    return json.dumps(products)
 
-@app.post("/post_test")
-def save_test():
-    test1 = {
-    "title":"test1",
-    "price":123,
-    "category":"test"
-    }
-    return json.dumps(test1)
+
+
 
 
 
